@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mudassir | Software Engineer Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6C63FF;
+            --secondary-color: #00E0FF;
+            --accent-color: #FF00E5;
+            --dark-bg: #0A0E17;
+            --card-bg: #121A2B;
+            --text-color: #E6E6E6;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        header {
+            padding: 1.5rem 0;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .section {
+            min-height: 100vh;
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        .title-gradient {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .accent-gradient {
+            background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            z-index: -1;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+        
+        .btn {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            z-index: 1;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            width: 100%;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 10px;
+            position: relative;
+            animation: skillAnimation 2s ease forwards;
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+        
+        @keyframes skillAnimation {
+            0% {
+                transform: scaleX(0);
+            }
+            100% {
+                transform: scaleX(1);
+            }
+        }
+        
+        .skill-progress.html {
+            background: linear-gradient(90deg, #E44D26, #F16529);
+            width: 90%;
+        }
+        
+        .skill-progress.css {
+            background: linear-gradient(90deg, #264DE4, #2965F1);
+            width: 85%;
+        }
+        
+        .skill-progress.js {
+            background: linear-gradient(90deg, #F7DF1E, #F0DB4F);
+            width: 75%;
+        }
+        
+        .skill-progress.react {
+            background: linear-gradient(90deg, #61DAFB, #00D8FF);
+            width: 70%;
+        }
+        
+        .skill-progress.ui {
+            background: linear-gradient(90deg, #FF3366, #FF5733);
+            width: 80%;
+        }
+        
+        .skill-progress.responsive {
+            background: linear-gradient(90deg, #9C27B0, #673AB7);
+            width: 85%;
+        }
+        
+        .progress-circle {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+        }
+        
+        .progress-circle svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+        
+        .progress-circle circle {
+            fill: none;
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+            transform-origin: center;
+        }
+        
+        .progress-circle .bg {
+            stroke: rgba(255, 255, 255, 0.1);
+            stroke-dashoffset: 0;
+        }
+        
+        .progress-circle .meter {
+            animation: progress 2s ease-out forwards;
+        }
+        
+        @keyframes progress {
+            from {
+                stroke-dashoffset: 283;
+            }
+            to {
+                stroke-dashoffset: var(--final-offset);
+            }
+        }
+        
+        .progress-circle .value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 40px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            box-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
+            z-index: 1;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(108, 99, 255, 0.2);
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-color);
+            margin-right: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Neon glow effects */
+        .neon-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: -1;
+            opacity: 0.5;
+        }
+        
+        .glow-1 {
+            width: 300px;
+            height: 300px;
+            background-color: var(--primary-color);
+            top: 20%;
+            right: -150px;
+        }
+        
+        .glow-2 {
+            width: 400px;
+            height: 400px;
+            background-color: var(--secondary-color);
+            bottom: 10%;
+            left: -200px;
+        }
+        
+        .glow-3 {
+            width: 250px;
+            height: 250px;
+            background-color: var(--accent-color);
+            top: 60%;
+            right: 10%;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .timeline {
+                padding-left: 40px;
+            }
+            
+            .progress-circle {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        
+        /* Animated cursor */
+        .typed-cursor {
+            opacity: 1;
+            animation: typedjsBlink 0.7s infinite;
+        }
+        
+        @keyframes typedjsBlink {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <div class="neon-glow glow-1"></div>
+    <div class="neon-glow glow-2"></div>
+    <div class="neon-glow glow-3"></div>
+    
+    <header class="container mx-auto py-6 flex items-center justify-between">
+        <div class="text-xl font-bold">
+            <span class="text-white">Mudassi</span><span class="text-gradient" style="color: var(--primary-color)">rDev</span>
+        </div>
+        <nav class="hidden md:flex items-center space-x-8">
+            <a href="#home" class="text-gray-300 hover:text-white transition-colors">Home</a>
+            <a href="#about" class="text-gray-300 hover:text-white transition-colors">About</a>
+            <a href="#skills" class="text-gray-300 hover:text-white transition-colors">Skills</a>
+            <a href="#projects" class="text-gray-300 hover:text-white transition-colors">Projects</a>
+            <a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+        </nav>
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-white">
+                <i class="ri-menu-line text-2xl"></i>
+            </button>
+        </div>
+    </header>
+    
+    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-95 z-50">
+        <div class="flex justify-end p-6">
+            <button id="mobile-menu-close" class="text-white">
+                <i class="ri-close-line text-3xl"></i>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
+            <a href="#home" class="text-2xl text-white hover:text-primary-500 transition-colors mobile-link">Home</a>
+            <a href="#about" class="text-2xl text-white hover:text-primary-500 transition-colors mobile-link">About</a>
+            <a href="#skills" class="text-2xl text-white hover:text-primary-500 transition-colors mobile-link">Skills</a>
+            <a href="#projects" class="text-2xl text-white hover:text-primary-500 transition-colors mobile-link">Projects</a>
+            <a href="#contact" class="text-2xl text-white hover:text-primary-500 transition-colors mobile-link">Contact</a>
+        </div>
+    </div>
+    
+    <section id="home" class="section hero-section">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="animate__animated animate__fadeInLeft">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                        <span class="block mb-2">Mudassir Dev</span>
+                        <span class="title-gradient text-3xl md:text-5xl" id="type-text">Frontend Developer</span>
+                    </h1>
+                    <p class="text-xl text-gray-400 mb-8">Crafting immersive digital experiences through creative code.</p>
+                    <div class="flex space-x-4">
+                        <a href="#projects" class="btn">View Projects</a>
+                        <a href="#contact" class="btn">Contact Me</a>
+                    </div>
+                    <div class="mt-8 social-icons">
+                        <a href="#" target="_blank" rel="noopener"><i class="ri-github-fill"></i></a>
+                        <a href="#" target="_blank" rel="noopener"><i class="ri-linkedin-fill"></i></a>
+                        <a href="#" target="_blank" rel="noopener"><i class="ri-twitter-fill"></i></a>
+                        <a href="#" target="_blank" rel="noopener"><i class="ri-instagram-line"></i></a>
+                    </div>
+                </div>
+                <div class="hidden md:block animate__animated animate__fadeInRight">
+                    <div class="relative">
+                        <div class="w-64 h-64 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 blur-2xl opacity-30 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+                        <div class="relative z-10 flex items-center justify-center w-80 h-80 mx-auto">
+                            <div class="w-72 h-72 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-center">
+                                <div class="text-white">
+                                    <div class="text-5xl font-bold">MD</div>
+                                    <div class="text-xs uppercase tracking-wider mt-2">DEVELOPER</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" class="section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 title-gradient">About Me</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="card fade-in">
+                    <h3 class="text-2xl font-bold mb-4">English Introduction</h3>
+                    <p class="mb-4">Hello! I'm Mudassir Dev, a passionate frontend developer with a keen eye for design and a love for creating interactive web experiences. With expertise in HTML, CSS, and JavaScript, I transform ideas into beautiful, functional websites that leave a lasting impression.</p>
+                    <p>My approach to web development combines technical expertise with creativity, resulting in websites that not only look amazing but also perform exceptionally well. I'm dedicated to staying updated with the latest web technologies and design trends to deliver cutting-edge solutions.</p>
+                </div>
+                <div class="card fade-in">
+                    <h3 class="text-2xl font-bold mb-4 text-right accent-gradient">اردو تعارف</h3>
+                    <p class="mb-4 text-right">السلام علیکم! میں مدثر ڈیو ہوں، ایک پرجوش فرنٹ اینڈ ڈیولپر جس کی خاص دلچسپی ڈیزائن میں ہے اور جو انٹرایکٹو ویب تجربات بنانے کے شوق کے ساتھ کام کرتا ہے۔ HTML, CSS, اور JavaScript میں مہارت کے ساتھ، میں خیالات کو خوبصورت، فعال ویب سائٹس میں تبدیل کرتا ہوں جو دیرپا تاثر چھوڑتی ہیں۔</p>
+                    <p class="text-right">ویب ڈیولپمنٹ کے میرے طریقہ کار میں تکنیکی مہارت اور تخلیقی صلاحیت کا مربوط ہے جس کے نتیجے میں ایسی ویب سائٹس بنتی ہیں جو نہ صرف دیکھنے میں حیرت انگیز ہیں بلکہ کارکردگی کے لحاظ سے بھی مثالی ہیں۔ میں جدید ترین ویب ٹیکنالوجیز اور ڈیزائن ٹرینڈز سے اپ ڈیٹ رہنے کے لیے وقف ہوں تاکہ جدید ترین حل پیش کر سکوں۔</p>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6 mt-16">
+                <div class="card text-center fade-in">
+                    <div class="text-4xl text-blue-500 mb-4">
+                        <i class="ri-speed-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Fast Performance</h3>
+                    <p class="text-gray-400">Websites optimized for speed and performance across all devices.</p>
+                </div>
+                <div class="card text-center fade-in">
+                    <div class="text-4xl text-green-500 mb-4">
+                        <i class="ri-responsive-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Responsive Design</h3>
+                    <p class="text-gray-400">Layouts that work perfectly on any screen size or device.</p>
+                </div>
+                <div class="card text-center fade-in">
+                    <div class="text-4xl text-yellow-500 mb-4">
+                        <i class="ri-lightbulb-flash-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Creative Solutions</h3>
+                    <p class="text-gray-400">Innovative approaches to solve complex design challenges.</p>
+                </div>
+            </div>
+            
+            <div class="mt-20 card timeline fade-in">
+                <h3 class="text-2xl font-bold mb-6">My Journey</h3>
+                <div class="timeline-item">
+                    <h4 class="text-xl font-bold">First Year Software Engineering Student</h4>
+                    <p class="text-sm text-gray-400 mb-2">2023 - Present</p>
+                    <p>Successfully completed my first year of software engineering studies, focusing on building a strong foundation in programming concepts, algorithms, and web technologies.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 class="text-xl font-bold">Self-Taught Frontend Developer</h4>
+                    <p class="text-sm text-gray-400 mb-2">2022 - Present</p>
+                    <p>Dedicated countless hours to learning frontend development through online courses, tutorials, and hands-on projects. Mastered HTML, CSS, and JavaScript, and explored modern frameworks.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 class="text-xl font-bold">High School Graduation</h4>
+                    <p class="text-sm text-gray-400 mb-2">2022</p>
+                    <p>Graduated with distinction in computer science and mathematics, which sparked my interest in pursuing software engineering as a career.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills" class="section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 title-gradient">My Skills</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="card fade-in">
+                    <h3 class="text-2xl font-bold mb-6">Technical Skills</h3>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold">HTML5</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress html"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold">CSS3 / SASS</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress css"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold">JavaScript</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress js"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold">React / Next.js</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress react"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold">UI/UX Design</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress ui"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold">Responsive Design</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress responsive"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card fade-in">
+                    <h3 class="text-2xl font-bold mb-6">Professional Skills</h3>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center">
+                            <div class="progress-circle" data-percent="80">
+                                <svg>
+                                    <circle class="bg" cx="60" cy="60" r="45"></circle>
+                                    <circle class="meter" style="--final-offset: 56.6" stroke="var(--primary-color)" cx="60" cy="60" r="45"></circle>
+                                </svg>
+                                <div class="value">80%</div>
+                            </div>
+                            <h4 class="mt-4 font-semibold">Problem Solving</h4>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="progress-circle" data-percent="85">
+                                <svg>
+                                    <circle class="bg" cx="60" cy="60" r="45"></circle>
+                                    <circle class="meter" style="--final-offset: 42.45" stroke="var(--secondary-color)" cx="60" cy="60" r="45"></circle>
+                                </svg>
+                                <div class="value">85%</div>
+                            </div>
+                            <h4 class="mt-4 font-semibold">Communication</h4>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="progress-circle" data-percent="90">
+                                <svg>
+                                    <circle class="bg" cx="60" cy="60" r="45"></circle>
+                                    <circle class="meter" style="--final-offset: 28.3" stroke="var(--accent-color)" cx="60" cy="60" r="45"></circle>
+                                </svg>
+                                <div class="value">90%</div>
+                            </div>
+                            <h4 class="mt-4 font-semibold">Creativity</h4>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="progress-circle" data-percent="75">
+                                <svg>
+                                    <circle class="bg" cx="60" cy="60" r="45"></circle>
+                                    <circle class="meter" style="--final-offset: 70.75" stroke="#00C853" cx="60" cy="60" r="45"></circle>
+                                </svg>
+                                <div class="value">75%</div>
+                            </div>
+                            <h4 class="mt-4 font-semibold">Team Work</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12">
+                        <h3 class="text-xl font-bold mb-4">Languages</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <p class="font-semibold">English</p>
+                                <div class="flex">
+                                    <span class="text-yellow-500 text-lg">★★★★</span><span class="text-gray-500 text-lg">★</span>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Urdu</p>
+                                <div class="flex">
+                                    <span class="text-yellow-500 text-lg">★★★★★</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects" class="section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 title-gradient">My Projects</h2>
+            
+            <div class="text-center mb-12">
+                <p class="text-xl text-gray-400">As a first-year software engineering student, I'm building my portfolio with personal projects and learning experiences. Here are some of the projects I've worked on to develop my skills:</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card fade-in">
+                    <div class="relative overflow-hidden rounded-lg mb-6 bg-gray-800 h-48 flex items-center justify-center">
+                        <div class="text-6xl text-primary-500">
+                            <i class="ri-layout-4-line"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Personal Portfolio Website</h3>
+                    <p class="text-gray-400 mb-4">A responsive personal portfolio website built with HTML, CSS, and JavaScript, featuring smooth animations and modern design elements.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs bg-blue-900 bg-opacity-30 text-blue-400 py-1 px-2 rounded-full">HTML5</span>
+                        <span class="text-xs bg-purple-900 bg-opacity-30 text-purple-400 py-1 px-2 rounded-full">CSS3</span>
+                        <span class="text-xs bg-yellow-900 bg-opacity-30 text-yellow-400 py-1 px-2 rounded-full">JavaScript</span>
+                    </div>
+                    <a href="#" class="text-primary-500 hover:underline inline-flex items-center">
+                        <span>View Project</span>
+                        <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="relative overflow-hidden rounded-lg mb-6 bg-gray-800 h-48 flex items-center justify-center">
+                        <div class="text-6xl text-green-500">
+                            <i class="ri-todo-line"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Task Management App</h3>
+                    <p class="text-gray-400 mb-4">A simple task management application with features to add, delete, and mark tasks as complete. Built with HTML, CSS, and JavaScript.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs bg-blue-900 bg-opacity-30 text-blue-400 py-1 px-2 rounded-full">HTML5</span>
+                        <span class="text-xs bg-purple-900 bg-opacity-30 text-purple-400 py-1 px-2 rounded-full">CSS3</span>
+                        <span class="text-xs bg-yellow-900 bg-opacity-30 text-yellow-400 py-1 px-2 rounded-full">JavaScript</span>
+                    </div>
+                    <a href="#" class="text-primary-500 hover:underline inline-flex items-center">
+                        <span>View Project</span>
+                        <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="relative overflow-hidden rounded-lg mb-6 bg-gray-800 h-48 flex items-center justify-center">
+                        <div class="text-6xl text-yellow-500">
+                            <i class="ri-weather-line"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Weather Dashboard</h3>
+                    <p class="text-gray-400 mb-4">A weather dashboard that displays current weather conditions and forecasts for any city. Uses an external API to fetch real-time weather data.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs bg-blue-900 bg-opacity-30 text-blue-400 py-1 px-2 rounded-full">HTML5</span>
+                        <span class="text-xs bg-purple-900 bg-opacity-30 text-purple-400 py-1 px-2 rounded-full">CSS3</span>
+                        <span class="text-xs bg-yellow-900 bg-opacity-30 text-yellow-400 py-1 px-2 rounded-full">JavaScript</span>
+                        <span class="text-xs bg-red-900 bg-opacity-30 text-red-400 py-1 px-2 rounded-full">API</span>
+                    </div>
+                    <a href="#" class="text-primary-500 hover:underline inline-flex items-center">
+                        <span>View Project</span>
+                        <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="#contact" class="btn">Interested in collaborating? Contact me</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 title-gradient">Get In Touch</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="card fade-in">
+                    <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="text-primary-500 text-2xl mt-1 mr-4">
+                                <i class="ri-mail-line"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Email</h4>
+                                <p class="text-gray-400">mudassir.dev@example.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-primary-500 text-2xl mt-1 mr-4">
+                                <i class="ri-phone-line"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Phone</h4>
+                                <p class="text-gray-400">+92 300 1234567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-primary-500 text-2xl mt-1 mr-4">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Location</h4>
+                                <p class="text-gray-400">Lahore, Pakistan</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10">
+                        <h4 class="font-semibold mb-4">Follow me on social media</h4>
+                        <div class="social-icons">
+                            <a href="#" target="_blank" rel="noopener"><i class="ri-github-fill"></i></a>
+                            <a href="#" target="_blank" rel="noopener"><i class="ri-linkedin-fill"></i></a>
+                            <a href="#" target="_blank" rel="noopener"><i class="ri-twitter-fill"></i></a>
+                            <a href="#" target="_blank" rel="noopener"><i class="ri-instagram-line"></i></a>
+                            <a href="#" target="_blank" rel="noopener"><i class="ri-facebook-fill"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card fade-in">
+                    <h3 class="text-2xl font-bold mb-6">Send Me a Message</h3>
+                    <form class="contact-form">
+                        <div class="mb-4">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="mb-4">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="mb-4">
+                            <input type="text" placeholder="Subject">
+                        </div>
+                        <div class="mb-6">
+                            <textarea rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn w-full">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="py-10 bg-gray-900 mt-20">
+        <div class="container mx-auto px-4 text-center">
+            <div class="text-xl font-bold mb-6">
+                <span class="text-white">Mudassi</span><span class="text-gradient" style="color: var(--primary-color)">rDev</span>
+            </div>
+            <p class="text-gray-400 mb-6">"Crafting digital experiences with code and creativity."</p>
+            <div class="social-icons mb-8 justify-center flex">
+                <a href="#" target="_blank" rel="noopener"><i class="ri-github-fill"></i></a>
+                <a href="#" target="_blank" rel="noopener"><i class="ri-linkedin-fill"></i></a>
+                <a href="#" target="_blank" rel="noopener"><i class="ri-twitter-fill"></i></a>
+                <a href="#" target="_blank" rel="noopener"><i class="ri-instagram-line"></i></a>
+            </div>
+            <p class="text-gray-500">© 2023 Mudassir Dev. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    
+    <script>
+        // Initialize particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: ['#6C63FF', '#00E0FF', '#FF00E5']
+                },
+                shape: {
+                    type: 'circle',
+                    stroke: {
+                        width: 0,
+                        color: '#000000'
+                    },
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 2,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#6C63FF',
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: 'none',
+                    random: true,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 0.5
+                        }
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+        
+        // Typed.js initialization for typing effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const typed = new Typed('#type-text', {
+                strings: ['Frontend Developer', 'UI/UX Enthusiast', 'Web Designer', 'Software Engineer Student'],
+                typeSpeed: 60,
+                backSpeed: 30,
+                backDelay: 2000,
+                startDelay: 500,
+                loop: true
+            });
+            
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            
+            if(mobileMenuButton && mobileMenu && mobileMenuClose) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.remove('hidden');
+                });
+                
+                mobileMenuClose.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+                
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+            
+            // Fade-in elements on scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            function checkFade() {
+                fadeElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    
+                    if (rect.top <= windowHeight * 0.85) {
+                        el.classList.add('appear');
+                    }
+                });
+            }
+            
+            // Check initial state
+            checkFade();
+            
+            // Add scroll event
+            window.addEventListener('scroll', checkFade);
+        });
+    </script>
+</body>
+</html>
